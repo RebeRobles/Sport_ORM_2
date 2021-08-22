@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!--link bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.css"/>
+
+    <!--CSS propio-->    
+
+    <!-- JS Jquery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+
+	<title>Sports Leagues ORM Parte 2</title>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#">Sport ORM</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+					<li class="nav-item">
+						<a class="nav-link" href="#leagues">Leagues</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#teams">Teams</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="#players">Players</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{% url 'index' %}">SPORT ORM 1</a>
+					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+							Sport ORM Part 2
+						</a>
+						<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<li><a class="dropdown-item" href="#teams_atlantic_soccer_conference">#1 Todos los equipos de la Atlantic Soccer Conference</a></li>
+							<li><a class="dropdown-item" href="#players_boston_penguins">#2 Todos los jugadores de Boston Penguins</a></li>
+							<li><a class="dropdown-item" href="#players_ICBC">#3 Todos los jugadores de ICBC</a></li>
+							<li><a class="dropdown-item" href="#players_ACAF">#4 Todos los jugadores de ACAF con apellido López</a></li>
+							<li><a class="dropdown-item" href="#football_players">#5 Todos los jugadores de Fútbol Americano</a></li>
+							<li><a class="dropdown-item" href="#players_name_sophia">#6 Todos los jugadores de nombre Sofía</a></li>
+							<li><a class="dropdown-item" href="#league_name_sophia">#7 Todas las ligas con jugadoras llamadas Sofía</a></li>
+							<li><a class="dropdown-item" href="#players_flores">#8 Todos los jugadores de apellidos Flores con excepciones</a></li>
+							<li><a class="dropdown-item" href="#teams_samuel_evans">#9 Todos los equipos de Samuel Evans</a></li>
+							<li><a class="dropdown-item" href="#players_tiger_cats">#10 Todos los jugadores de Tiger-Cats</a></li>
+							<li><a class="dropdown-item" href="#explayers_vikings">#11 Todos los ex-jugadores de Wichita Vikings</a></li>
+							<li><a class="dropdown-item" href="#exteams_jacob_gray">#12 Todos los ex-equipos de Jacob Gray</a></li>
+							<li><a class="dropdown-item" href="#all_joshua">#13 Todos los Joshua de la Liga AFABP</a></li>
+							<li><a class="dropdown-item" href="#12_players">#14 Todos los equipos con 12 o más jugadores o ex-jugadores</a></li>
+							<li><a class="dropdown-item" href="#number_teams">#15 Todos los jugadores con número de equipos para los que jugó</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<div class="container mt-4">
+		<h1 class="page-header">Resultados segunda parte</h1>
+	</div>
+	<div class="container mt-4">
+		<h1 id="leagues">Leagues</h1>
+		<ol>
+			{% for league in leagues %}
+				<li>{{league.name}}</li>
+			{% empty %}
+				<p>No leagues found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="teams">Teams</h1>
+		<ol>
+			{% for team in teams %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players">Players</h1>
+		<ol>
+			{% for player in players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No teams found.  Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="teams_atlantic_soccer_conference">(01) Todos los equipos de la Atlantic Soccer Conference</h1>
+		<ol>
+			{% for team in teams_atlantic_soccer_conference %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% empty %}
+				<p>No teams in Atlantic Soccer Conference. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players_boston_penguins">(02) Players Boston Penguins</h1>
+		<ol>
+			{% for player in players_boston_penguins %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players in Boston Penguins. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players_ICBC">(03) Players ICBC</h1>
+		<ol>
+			{% for player in players_ICBC %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players in ICBC. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players_ACAF">(04) Players ACAF</h1>
+		<ol>
+			{% for player in players_ACAF %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players in ACAF. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="football_players">(05) Players Football</h1>
+		<ol>
+			{% for player in football_players %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players in ACAF. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players_name_sophia">(06) Team players Sophia name</h1>
+		<ol>
+			{% for player in players_name_sophia %}
+				<li>{{player.first_name}} {{player.last_name}} | {{player.curr_team.team_name}}</li>
+			{% empty %}
+				<p>No players Sophia. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="leagues_name_sophia">(07) League players Sophia name</h1>
+		<ol>
+			{% for player in leagues_name_sophia %}
+				<li>{{player.first_name}} {{player.last_name}} | {{player.curr_team.league.name}}</li>
+			{% empty %}
+				<p>No players Sophia. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players_flores">(08) Players Flores name</h1>
+		<ol>
+			{% for player in players_flores %}
+				<li>{{player.last_name}} {{player.first_name}} | {{player.curr_team.team_name}}</li>
+			{% empty %}
+				<p>No players Flores. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="teams_samuel_evans">(09) Samuel Evans Team's</h1>
+		<ol>
+			{% for team in teams_samuel_evans %}
+				<li>{{team.team_name}}</li>
+			{% empty %}
+				<p>No teams Samuel Evans. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="players_tiger_cats">(10) Tiger-Cats Player's</h1>
+		<ol>
+			{% for player in players_tiger_cats %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players in Tiger-Cats. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="explayers_vikings">(11) Previous Vikings Players</h1>
+		<ol>
+			{% for player in explayers_vikings %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No players in Vikings. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="exteams_jacob_gray">(12) Jacob Gray's previous teams</h1>
+		<ol>
+			{% for team in exteams_jacob_gray %}
+				<li>{{team.location}} {{team.team_name}}</li>
+			{% empty %}
+				<p>No found teams. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="all_joshua">(13) All Joshua in Atlantic Federation of Amateur Baseball Players</h1>
+		<ol>
+			{% for player in all_joshua %}
+				<li>{{player.first_name}} {{player.last_name}}</li>
+			{% empty %}
+				<p>No found teams. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="12_players">(14) All teams 12 players</h1>
+		<ol>
+			{% for team in 12_players %}
+				<li>{{team.team_name}} | {{team.num_players}}</li>
+			{% empty %}
+				<p>No found teams. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+		<h1 id="number_teams">(15) Players and Teams number</h1>
+		<ol>
+			{% for player in number_teams %}
+				<li>{{player.first_name}} {{player.last_name}} | {{player.total_teams}}</li>
+			{% empty %}
+				<p>No found teams. Try <code>python manage.py loaddata data.json</found. Try <code>python manage.py loaddata data.json</code>, or, if that doesn't work, going <a href="{% url 'make_data' %}">here</a> (but be prepared to wait).</p>
+			{% endfor %}
+		</ol>
+		<hr>
+	</div>
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.js"></script>
+</body>
+</html>
